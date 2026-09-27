@@ -18,9 +18,9 @@
     "node": ">=20.11"
   },
   "bin": {
-    "dsh-live-trace": "./bin/dsh-live-trace.js",
-    "dsh-live-working": "./bin/dsh-live-working.js",
-    "dsh-glyph-probe": "./bin/dsh-glyph-probe.js"
+    "dsh-live-trace": "bin/dsh-live-trace.js",
+    "dsh-live-working": "bin/dsh-live-working.js",
+    "dsh-glyph-probe": "bin/dsh-glyph-probe.js"
   },
   "main": "./index.js",
   "icon": "./icon.svg",
