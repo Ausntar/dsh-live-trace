@@ -46,7 +46,8 @@
     "icon.svg",
     "README.md",
     "scripts",
-    "assets"
+    "assets",
+    "picture"
   ],
   "scripts": {
     "test": "node --test 'test/*.test.js'",

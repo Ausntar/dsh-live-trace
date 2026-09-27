@@ -1,5 +1,7 @@
 # dsh-live-trace
 
+**English** · [中文](README.zh.md)
+
 Two **read-only** windows onto a running DeepSeek Harness session, rendered in a
 terminal that is *not* the one running your agent:
 
@@ -10,6 +12,14 @@ terminal that is *not* the one running your agent:
 
 Both attach to the same running Harness process over the same local socket and
 neither ever sends anything to the agent.
+
+![The dashboard, with reasoning, a bash call and its output](picture/tui2.png)
+
+![The orca on the telephone, taking a subagent's reply](picture/call2.png)
+
+| Thinking | Sleeping |
+| :---: | :---: |
+| ![The orca thinking, in the room](picture/type1.png) | ![The orca asleep under a dusk sky](picture/sleep1.png) |
 
 ## `dsh-live-trace` — the dashboard
 
@@ -329,13 +339,10 @@ first.
 
 **Plugin → viewer:** `hello` (server identity, session list, active session),
 `sessions`, `entry` (one normalized trace line), `stream` (coalesced live text),
-`stream-end`, `status`, `usage`, `heartbeat`, `error`.
+`stream-end`, `status`, `usage`, `edits`, `heartbeat`, `error`.
 
 **Viewer → plugin:** `select` (bind a session; omitted id means "the server's
 default"), `replay`, `ping`.
-
-**Plugin → viewer:** `hello`, `sessions`, `entry`, `stream`, `stream-end`,
-`status`, `usage`, `edits`, `heartbeat`, `error`.
 
 An `entry` may carry a `key`; two records with the same key are one row, the
 later one replacing the earlier in place. That is how a tool call and its
