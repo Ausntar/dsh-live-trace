@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Live Trace",
+    "description": "Publishes normalized Harness session events on a local socket so the standalone `dsh-live-trace` terminal dashboard can show live Turn/Step progress, tool calls, streaming text, elapsed time, and token usage."
+  }
+}

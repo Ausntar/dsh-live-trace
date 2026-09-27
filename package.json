@@ -1,0 +1,93 @@
+{
+  "name": "dsh-live-trace",
+  "version": "0.1.0",
+  "description": "Read-only live terminal dashboard for DeepSeek Harness sessions: a Host plugin that normalizes session events onto a local socket, plus a standalone full-screen `dsh-live-trace` viewer.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "observability",
+    "terminal",
+    "dashboard",
+    "trace"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "bin": {
+    "dsh-live-trace": "./bin/dsh-live-trace.js",
+    "dsh-live-working": "./bin/dsh-live-working.js",
+    "dsh-glyph-probe": "./bin/dsh-glyph-probe.js"
+  },
+  "main": "./index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./normalize": "./lib/normalize.js",
+    "./protocol": "./lib/protocol.js",
+    "./registry": "./lib/registry.js",
+    "./width": "./src/cli/width.js",
+    "./renderer": "./src/cli/renderer.js",
+    "./view-state": "./src/cli/view-state.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "lib",
+    "src",
+    "bin",
+    "locale",
+    "icon.svg",
+    "README.md",
+    "scripts",
+    "assets"
+  ],
+  "scripts": {
+    "test": "node --test 'test/*.test.js'",
+    "test:watch": "node --test --watch 'test/*.test.js'",
+    "demo": "node scripts/demo.mjs",
+    "install:profile": "node scripts/install-profile.mjs",
+    "mock-provider": "node scripts/mock-provider.mjs",
+    "bench": "node scripts/bench-render.mjs",
+    "demo:working": "node scripts/demo-working.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "catalog": {
+      "category": "observability",
+      "summary": {
+        "en": "Read-only live terminal dashboard for Harness sessions: streams Turn/Step progress, tool calls and results, coalesced streaming text, elapsed time and token usage to a standalone `dsh-live-trace` viewer.",
+        "zh": "会话实时终端看板（只读）：把 Turn/Step 进度、工具调用与结果、合并后的流式思考文本、耗时与 Token 消耗推送到独立的 `dsh-live-trace` 终端窗口。"
+      },
+      "capabilities": [
+        "host-observability",
+        "cli"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "author": "Ausntar",
+  "homepage": "https://github.com/Ausntar/dsh-live-trace#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ausntar/dsh-live-trace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ausntar/dsh-live-trace/issues"
+  }
+}

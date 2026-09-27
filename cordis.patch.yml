@@ -1,0 +1,31 @@
+# Bundle patch for dsh-live-trace.
+#
+# Inserting this row adds the Host-side observer to whichever profile loads the
+# bundle. It is inert until the standalone `dsh-live-trace` viewer connects:
+# the plugin only publishes normalized session events on a local socket, so it
+# never changes what the agent does.
+- insert:
+    - id: dsh-live-trace
+      name: dsh-live-trace
+      config:
+        # Set to false to keep the observer from starting at all.
+        enabled: true
+        # How often coalesced streaming text is pushed, in milliseconds.
+        streamIntervalMs: 500
+        # Recent normalized entries retained per session for late-joining viewers.
+        backlogSize: 2000
+        # Command output retained per call, for the commands panel and tool blocks.
+        outputLines: 200
+        outputChars: 20000
+        # Emit the rendered system prompt as a trace entry (noisy; off by default).
+        showSystemMessages: false
+        # Emit request/header and request/context bookkeeping as trace entries.
+        showRequestMetadata: false
+        # Emit unrecognized event types as generic entries instead of dropping
+        # them. Off by default: most unknown events are plugin bookkeeping.
+        showUnknownEvents: false
+        # Event types to hide; `*` is a prefix match. Built in:
+        # ['session-log-deepseek/*'].
+        # mutedEventTypes:
+        #   - 'session-log-deepseek/*'
+        #   - 'some-plugin/*'

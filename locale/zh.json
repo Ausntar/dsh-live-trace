@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "实时轨迹看板",
+    "description": "把 Harness 会话事件归一化后发布到本地 socket，供独立的 `dsh-live-trace` 终端看板实时展示 Turn/Step 进度、工具调用、流式文本、耗时与 Token 消耗。"
+  }
+}

@@ -1,0 +1,28 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # No dependencies to install: the package has none.
+      - name: Run the suite
+        # The glob must stay quoted — an unquoted directory is treated as a
+        # module and hangs.
+        run: node --test 'test/*.test.js'
+      - name: Check every file parses
+        run: |
+          for f in $(find . -name '*.js' -o -name '*.mjs' | grep -v node_modules); do
+            node --check "$f" || exit 1
+          done
